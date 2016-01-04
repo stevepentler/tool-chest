@@ -7,7 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<p>
+ <strong>Newest tool:</strong> <%= most_recent_tool.name %>
+</p>
 
+<% flash.each do |type, msg| %> 
+  <%= content_tag(:div, msg, class: "flash_#{type}") %>
+  <%end%>
 <%= yield %>
 
 </body>
