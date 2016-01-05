@@ -8,6 +8,7 @@ class UserSignsUpForAccountTest < ActionDispatch::IntegrationTest
 # save_and_open_page
     fill_in "Username", with: "Charles Barkley"
     fill_in "Password", with: "34PhoenixSuns"
+    fill_in "Password confirmation", with: "34PhoenixSuns"
     click_on "Create Account"
 
     user = User.last
