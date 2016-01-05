@@ -1,8 +1,9 @@
 class ToolsController < ApplicationController #looks for tools folder in app views, and index file
   before_action :set_tool, only: [:show, :edit, :update, :destroy]       #to refactor @tool.find(params[:id])
-
+  # before_action :initiate_session #moved to application_controller
 
   def index
+    # session[:most_recent_tool_id]  = Tool.all.last.id
     @tools = Tool.all
   end 
 
@@ -16,7 +17,7 @@ class ToolsController < ApplicationController #looks for tools folder in app vie
   def create
     @tool = Tool.create(tool_params) 
     # cookies[:most_recent_tool_id]  = @tool.id
-    session[:most_recent_tool_id]  = @tool.id
+    # session[:most_recent_tool_id]  = @tool.id
     
     flash[:notice] = "You've succesfully created a new tool"
 
@@ -50,5 +51,9 @@ class ToolsController < ApplicationController #looks for tools folder in app vie
   def tool_params
     params.require(:tool).permit(:name, :use)
   end
+
+  # def initiate_session #moved to application_controller
+  #   session[:most_recent_tool_id]  = Tool.all.last.id
+  # end
 
 end 
