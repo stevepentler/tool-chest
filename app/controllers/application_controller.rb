@@ -9,4 +9,9 @@ class ApplicationController < ActionController::Base
   def most_recent_tool
     Tool.find_by(id: session[:most_recent_tool_id])
   end 
+
+  def initiate_session #moved to application_controller
+    session[:most_recent_tool_id]  = Tool.all.last.id
+  end
+  
 end
