@@ -11,6 +11,14 @@ class SessionsController < ApplicationController
       flash[:notice] = "Welcome Back!"
       redirect_to user_path(user)
     else
+      flash[:notice] = "Unsuccesful Login"
+      redirect_to login_path
     end 
+  end 
+
+  def destroy
+    session.clear
+    redirect_to tools_path
+    flash[:notice] = "Logged Out!"
   end 
 end 
