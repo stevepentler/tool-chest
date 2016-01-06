@@ -1,5 +1,5 @@
 <h1>Edit Tool</h1>
-<%= form_for(@tool) do |f| %> 
+<%= form_for(@tool, url: user_tool_path(@user, @tool.id)) do |f| %> 
   <%= f.label "name:" %> 
   <%= f.text_field :name %>
   <br> 
