@@ -2,8 +2,8 @@
 
 <% @user.tools.each do |tool| %>
   <p><h3><%=link_to(tool.name, user_tool_path(@user, tool)) %></h3> <h5> (<%= tool.use %>) </h5>
-  <%= link_to "edit", edit_user_tool_path(@user, tool) %>
-  <%= link_to "delete", user_tool_path(@user, tool), method: :delete %></p>
+  <%#= link_to "edit", edit_user_tool_path(@user, tool) %>
+  <%#= link_to "delete", user_tool_path(@user, tool), method: :delete %></p>
 <%end%>
 <br>
 

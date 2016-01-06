@@ -1,0 +1,5 @@
+<h1><%=@tool.name%></h1>
+<h3><%=@tool.use%></h3>
+
+  <%= link_to "edit", edit_admin_tool_path(@tool) %>
+  <%= link_to "delete", admin_tool_path(@tool), method: :delete %></p>
