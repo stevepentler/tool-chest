@@ -1,10 +1,9 @@
 class ToolsController < ApplicationController #looks for tools folder in app views, and index file
   before_action :set_tool, only: [:show] #only: [:show, :edit, :update, :destroy] 
-  before_action :set_user     #to refactor @tool.find(params[:id])
+  before_action :set_user, only: [:index, :show]    #to refactor @tool.find(params[:id])
   # before_action :initiate_session #moved to application_controller
 
   def index
-    
     @tools = @user.tools.all
     # session[:most_recent_tool_id]  = Tool.all.last.id
     # @tools = Tool.all
@@ -14,6 +13,20 @@ class ToolsController < ApplicationController #looks for tools folder in app vie
     # @tool = Tool.find(params[:id])
   end
 
+  private
+
+  def set_tool 
+    @tool = Tool.find(params[:id])
+  end 
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end 
+
+  def tool_params
+    params.require(:tool).permit(:name, :use)
+  end
+  
   # def new
   #   @tool = @user.tools.new
   # end 
@@ -46,19 +59,6 @@ class ToolsController < ApplicationController #looks for tools folder in app vie
   #   redirect_to user_tools_path
   # end 
 
-  private
-
-  def set_tool 
-    @tool = Tool.find(params[:id])
-  end 
-
-  def set_user
-    @user = User.find(params[:user_id])
-  end 
-
-  def tool_params
-    params.require(:tool).permit(:name, :use)
-  end
 
   # def initiate_session #moved to application_controller
   #   session[:most_recent_tool_id]  = Tool.all.last.id

@@ -7,7 +7,7 @@ class RegisteredUserLogsOutTest < ActionDispatch::IntegrationTest
     fill_in "Username", with: @user.username 
     fill_in "Password", with: "34PhoenixSuns"
     click_on "Login"
-    visit user_tools_path(@user.id)
+    visit user_tools_path(@user)
 
 
     click_on "Logout"
