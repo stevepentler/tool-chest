@@ -9,6 +9,9 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       flash[:notice] = "Account Created!" 
       redirect_to @user
+    else
+      flash[:notice] = "Invalid Account!"
+      redirect_to new_user_path
     end
   end
 
