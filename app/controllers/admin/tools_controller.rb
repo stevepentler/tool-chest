@@ -1,5 +1,5 @@
 class Admin::ToolsController < Admin::BaseController
-  before_action :set_tool, only: [:show, :create]
+  # before_action :set_tool, only: [:show, :create]
   # before_action :set_user, only: [:show]
   
   def index
@@ -11,13 +11,25 @@ class Admin::ToolsController < Admin::BaseController
   end
 
   def edit
+    @tool = Tool.find(params[:id])
   end
+
+  def update
+    @tool = Tool.find(params[:id])
+    @tool.update(tool_params)
+    redirect_to admin_tools_path
+  end 
 
   def new
     @tool = Tool.new
   end 
 
   def create
+    @user = User.find_by(user_name: params[:tool][:user])
+    if @user
+      @tool = @user.tools.create(tool_params)
+    end 
+
   @tool = Tool.create(tool_params) 
     if @tool.save
       redirect_to admin_tools_path
@@ -25,6 +37,13 @@ class Admin::ToolsController < Admin::BaseController
     else 
       render :new
     end
+  end 
+
+  def destroy
+    @tool = Tool.find(params[:id])
+    @tool.destroy
+
+    redirect_to admin_tools_path
   end 
 
   private
