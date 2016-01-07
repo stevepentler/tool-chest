@@ -1,6 +1,6 @@
 class ToolsController < ApplicationController #looks for tools folder in app views, and index file
   before_action :set_tool, only: [:show] #only: [:show, :edit, :update, :destroy] 
-  before_action :set_user, only: [:index, :show]    #to refactor @tool.find(params[:id])
+  before_action :set_user, only: [:index]    #to refactor @tool.find(params[:id])
   # before_action :initiate_session #moved to application_controller
 
   def index
