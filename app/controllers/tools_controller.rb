@@ -5,6 +5,7 @@ class ToolsController < ApplicationController #looks for tools folder in app vie
 
   def index
     @tools = @user.tools.all
+    flash[:Milwaukee] = "This page is brought to you by Milwaukee Power Tools."
     # session[:most_recent_tool_id] = Tool.all.last.id
     # @tools = Tool.all
   end 

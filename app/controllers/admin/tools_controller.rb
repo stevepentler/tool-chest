@@ -1,7 +1,7 @@
 class Admin::ToolsController < Admin::BaseController
+  before_action :set_tool, only: [:edit, :update, :destroy]
 
   def index
-    byebug
     @tools = Tool.all
   end
 
@@ -9,11 +9,9 @@ class Admin::ToolsController < Admin::BaseController
   end
 
   def edit
-    @tool = Tool.find(params[:id])
   end
 
   def update
-    @tool = Tool.find(params[:id])
     @tool.update(tool_params)
     redirect_to admin_tools_path
   end 
@@ -33,7 +31,6 @@ class Admin::ToolsController < Admin::BaseController
   end 
 
   def destroy
-    @tool = Tool.find(params[:id])
     @tool.destroy
 
     redirect_to admin_tools_path
@@ -44,6 +41,10 @@ class Admin::ToolsController < Admin::BaseController
   def tool_params
     params.require(:tool).permit(:name, :use, :user_id)
   end
+
+  def set_tool
+    @tool = Tool.find(params[:id])
+  end 
 
 end
 
