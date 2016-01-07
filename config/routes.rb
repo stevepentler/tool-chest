@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do 
-    resources :tools
+    resources :tools, except: [:show]
   end
 
   get '/login', to: "sessions#new"
