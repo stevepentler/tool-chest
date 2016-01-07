@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    session[:hit_counter] = session[:hit_counter].to_i + 1
     @user = current_user
   end
 

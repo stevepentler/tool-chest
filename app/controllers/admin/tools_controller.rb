@@ -1,6 +1,7 @@
 class Admin::ToolsController < Admin::BaseController
 
   def index
+    byebug
     @tools = Tool.all
   end
 
