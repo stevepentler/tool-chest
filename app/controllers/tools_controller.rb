@@ -5,7 +5,7 @@ class ToolsController < ApplicationController #looks for tools folder in app vie
 
   def index
     @tools = @user.tools.all
-    # session[:most_recent_tool_id]  = Tool.all.last.id
+    # session[:most_recent_tool_id] = Tool.all.last.id
     # @tools = Tool.all
   end 
 
@@ -20,13 +20,14 @@ class ToolsController < ApplicationController #looks for tools folder in app vie
   end 
 
   def set_user
-    @user = User.find(params[:user_id])
+    @user = current_user
+    # @user = User.find(params[:user_id])
   end 
 
   def tool_params
     params.require(:tool).permit(:name, :use)
   end
-  
+
   # def new
   #   @tool = @user.tools.new
   # end 

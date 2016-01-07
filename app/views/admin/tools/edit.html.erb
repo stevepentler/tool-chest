@@ -1,6 +1,6 @@
 <h1>Edit Tool</h1>
 
-<%= form_for(@tool, url: admin_tool_path) do |f| %>
+<%= form_for(@tool, url: admin_tool_path(@tool.id)) do |f| %>
   <%= f.label "name:" %> 
   <%= f.text_field :name %>
   <br>

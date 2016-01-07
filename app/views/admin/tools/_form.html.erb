@@ -1,6 +1,4 @@
-<h1>Create New Tool</h1>
-
-<%= form_for(@tool, url: admin_tools_path) do |f| %>
+<%= form_for(@tool, url: target) do |f| %>
   <%= f.label "name:" %> 
   <%= f.text_field :name %>
   <br>
