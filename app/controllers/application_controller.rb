@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_admin?
-    current_user && current_user.admin?
+    current_user && current_user.admin? #enum role: %w(default admin) in User Model
   end
   
 end
